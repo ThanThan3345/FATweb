@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Information Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      .main-nav {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .brand-name {
+        font-family: Righteous, sans-serif;
+        font-size: 24px;
+        color: #333;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #333;
+      }
+
+      .nav-link:hover {
+        color: #007bff;
+      }
+
+      .container {
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .page-title {
+        font-size: 32px;
+        margin-bottom: 24px;
+        color: #333;
+      }
+
+      .contact-form {
+        display: grid;
+        gap: 20px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-label {
+        margin-bottom: 8px;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 8px 12px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+
+      .submit-button {
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      .submit-button:hover {
+        background-color: #0056b3;
+      }
+
+      .submit-button:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+      }
+
+      @media (max-width: 640px) {
+        .main-nav {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .nav-links {
+          gap: 20px;
+        }
+
+        .container {
+          padding: 10px;
+        }
+
+        .page-title {
+          font-size: 24px;
+        }
+
+        .contact-form {
+          gap: 16px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="main-nav">
+      <div class="brand-name">FOOD AND TRAVEL</div>
+      <div class="nav-links">
+        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="#">Product</a>
+        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="#">Hello</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <h1 class="page-title">Contact Information</h1>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName" class="form-label">First Name</label>
+            <input id="firstName" type="text" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input id="lastName" type="text" class="form-input" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" type="email" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input id="phone" type="tel" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="address" class="form-label">Address</label>
+          <input id="address" type="text" class="form-input" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city" class="form-label">City</label>
+            <input id="city" type="text" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label for="state" class="form-label">State</label>
+            <input id="state" type="text" class="form-input" required />
+          </div>
+        </div>
+
+        <button class="submit-button" type="submit">Submit</button>
+      </form>
+    </main>
+
+    <script>
+      (() => {
+        const state = {
+          formData: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            address: "",
+            city: "",
+            state: "",
+          },
+          handleSubmit(event) {
+            event.preventDefault();
+            console.log(state.formData);
+            // Here you would typically send the data to a server
+            alert("Form submitted successfully!");
+          },
+          updateField(field, value) {
+            state.formData[field] = value;
+          },
+        };
+
+        // Get form and input elements
+        const form = document.getElementById("contactForm");
+        const inputs = {
+          firstName: document.getElementById("firstName"),
+          lastName: document.getElementById("lastName"),
+          email: document.getElementById("email"),
+          phone: document.getElementById("phone"),
+          address: document.getElementById("address"),
+          city: document.getElementById("city"),
+          state: document.getElementById("state"),
+        };
+
+        // Set up event listeners
+        form.addEventListener("submit", state.handleSubmit);
+
+        // Set up input event listeners
+        Object.keys(inputs).forEach((field) => {
+          const input = inputs[field];
+          input.addEventListener("input", (event) => {
+            state.updateField(field, event.target.value);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
