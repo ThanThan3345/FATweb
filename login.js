@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // Simulate API call
           await new Promise((resolve) => setTimeout(resolve, 1000));
           // next page
-          window.location.href = "./regis.html";
+          window.location.href = "./person.html";
         } catch (error) {
           state.errorMessage = "Login failed. Please try again.";
           updateUI();
